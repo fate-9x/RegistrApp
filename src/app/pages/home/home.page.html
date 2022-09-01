@@ -1,0 +1,67 @@
+<!-- Comienza el Header -->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      RegistrApp
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<!-- Termina el Header -->
+
+<!-- Comienza el Content -->
+<ion-content [fullscreen]="true">  
+  <ion-title class="ion-padding-top ion-text-center">
+    <ion-label>
+      <h1 class="title">Bienvenido</h1>
+      <!-- {{interpolacion}} 
+          Permite mostrar los d atos desde el script a la visual
+          verificar el data en el home.page.ts
+        -->
+      <p>Usuario: {{user.usuario}}</p>
+    </ion-label>
+  </ion-title>
+  <!-- Comienza un Card -->
+  <ion-card>
+    <!-- Contenido de un Card -->
+    <ion-card-content>
+      <!-- <ion-item class="ion-padding-horizontal">
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input type="text" [(ngModel)]="data.nombre"></ion-input>
+      </ion-item>
+      <ion-item class="ion-padding-horizontal">
+        <ion-label position="stacked">Apellido</ion-label>
+        <ion-input type="text" [(ngModel)]="data.apellido"></ion-input>
+      </ion-item> -->
+
+      <!-- <ion-item class="ion-padding-horizontal">
+        <ion-label position="stacked" class="ion-padding-bottom">Educación</ion-label>
+        <ion-select placeholder="Seleccione nivel" [(ngModel)]="data.education">
+          <ion-select-option *ngFor="let niv of niveles" [value]="niv.id">{{niv.nivel}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item class="ion-padding-horizontal">
+        <ion-label position="stacked" class="ion-padding-bottom">Fecha Nacimiento</ion-label>
+        <ion-input type="date" [(ngModel)]="data.nacimiento"></ion-input>
+      </ion-item> -->
+      <!-- <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <ion-button shape="block" (click)="limpiar()">
+              Limpiar
+            </ion-button>
+          </ion-col>
+          <ion-col col-6>
+            <ion-button shape="block" (click)="mostrar()">
+              Mostrar
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid> -->
+
+
+    </ion-card-content>
+    <!-- Contenido de un Card -->
+  </ion-card>
+  <!-- Termina un Card -->
+</ion-content>
+<!-- Termina el Content -->
