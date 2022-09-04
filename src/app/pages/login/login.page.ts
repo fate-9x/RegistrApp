@@ -23,7 +23,7 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
   }
-  ingresar() {
+  login() {
     if (this.validateModel(this.user)) {
       this.presentToast("Bienvenido", 3000)
       // Se declara e instancia un elemento de tipo NavigationExtras
@@ -33,10 +33,19 @@ export class LoginPage implements OnInit {
         }
       };
       this.router.navigate(['/home'], navigationExtras); // navegamos hacia el Home y enviamos información adicional
-    }else{
-      this.presentToast("Falta: "+this.field);
+    } else {
+      this.presentToast("Falta: " + this.field);
     }
 
+  }
+
+  resetPassword() {
+    let navigationExtras: NavigationExtras = {
+      state: {
+        user: this.user // Al estado se asignamos un objeto con clave y valor
+      }
+    };
+    this.router.navigate(['/resetpassword'], navigationExtras);
   }
 
   /**

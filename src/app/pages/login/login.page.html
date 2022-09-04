@@ -22,11 +22,12 @@
       </ion-item>
       <ion-row>
         <ion-col>
-          <ion-button class="reestablecerContrasena" size="small" color="light">Reestablecer Contraseña</ion-button>
+          <ion-button class="reestablecerContrasena" size="small" color="light" (click)="resetPassword()">Reestablecer Contraseña
+          </ion-button>
         </ion-col>
         <ion-col>
           <!-- Indicamos mediante el (click) la funcion a quien referenciara-->
-          <ion-button expand="full" (click)="ingresar()">Ingresar</ion-button>
+          <ion-button expand="full" (click)="login()">Ingresar</ion-button>
         </ion-col>
       </ion-row>
     </ion-card-content>
