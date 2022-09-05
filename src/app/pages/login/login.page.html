@@ -7,7 +7,7 @@
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <ion-title class="title">Iniciar Sesion</ion-title>
+      <ion-title class="title">Iniciar <br> Sesion</ion-title>
     </ion-card-header>
     <ion-card-content>
       <ion-item lines="full">
@@ -17,16 +17,17 @@
       </ion-item>
       <ion-item lines="full">
         <!-- Usamos ngModel para indicarle al input el objeto a utilizar-->
-        <ion-label position="floating">Password</ion-label>
+        <ion-label position="floating">Contraseña</ion-label>
         <ion-input type="password" [(ngModel)]="user.password" minlength="4" maxlength="4"></ion-input>
       </ion-item>
       <ion-row>
         <ion-col>
-          <ion-button class="reestablecerContrasena" size="small" color="light">Reestablecer Contraseña</ion-button>
+          <ion-button class="reestablecerContrasena" size="small" color="light" (click)="resetPassword()">Reestablecer Contraseña
+          </ion-button>
         </ion-col>
         <ion-col>
           <!-- Indicamos mediante el (click) la funcion a quien referenciara-->
-          <ion-button expand="full" (click)="ingresar()">Ingresar</ion-button>
+          <ion-button expand="full" (click)="login()">Ingresar</ion-button>
         </ion-col>
       </ion-row>
     </ion-card-content>
