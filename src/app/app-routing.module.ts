@@ -19,6 +19,7 @@ const routes: Routes = [
     path: 'resetpassword',
     loadChildren: () => import('./pages/resetpassword/resetpassword.module').then( m => m.ResetpasswordPageModule)
   },
+
 ];
 
 @NgModule({

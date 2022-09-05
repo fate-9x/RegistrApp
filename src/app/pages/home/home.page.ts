@@ -3,7 +3,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AnimationController, ToastController } from '@ionic/angular';
-import { Button } from 'protractor';
 
 // Decorador Componente este indica que el Home Page es un Componente
 @Component({
