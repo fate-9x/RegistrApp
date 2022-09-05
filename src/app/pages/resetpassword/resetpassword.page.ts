@@ -8,9 +8,19 @@ import { ToastController } from '@ionic/angular';
 })
 export class ResetpasswordPage implements OnInit {
 
+  user:any;
+
   constructor(public toastController: ToastController) { }
 
   ngOnInit() {
+  }
+
+  mostrarMensaje(){
+    if(this.user != ""){
+      this.presentToast('Se ha enviado un correo para reestablecer su contraseña.')
+    }else{
+      this.presentToast("Porfavor rellene el campo Usuario.")
+    }
   }
 
   async presentToast(msg: string, duration?: number) {
