@@ -1,8 +1,8 @@
 /** Importaciones de librerias a usar */
 
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { AnimationController, ToastController } from '@ionic/angular';
 import { Button } from 'protractor';
 
 // Decorador Componente este indica que el Home Page es un Componente
@@ -12,6 +12,9 @@ import { Button } from 'protractor';
   styleUrls: ['home.page.scss'], // Archivo/s de estilos
 })
 export class HomePage {
+
+  @ViewChild('animacion1', {read:ElementRef, static:true}) animacion1:ElementRef;
+
   user:any;
   data: any={
     seccion:"",
@@ -42,7 +45,7 @@ export class HomePage {
    * : Indica que el identificador sera de la clase posterior a los : puntos
    * 
    */
-  constructor(private activeroute: ActivatedRoute, private router: Router, public toastController:ToastController) {
+  constructor(private activeroute: ActivatedRoute, private router: Router, public toastController:ToastController, private animationCtrl: AnimationController) {
     // Se llama a la ruta activa y se obtiene sus parametros mediante una subscripcion
     this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda
       if (this.router.getCurrentNavigation().extras.state) { // Validamos que en la navegacion actual tenga extras
@@ -50,6 +53,16 @@ export class HomePage {
          // Muestra por consola lo traido
       }else{this.router.navigate(["/login"])} // Si no tiene extra la navegacion actual navegar al login
     });
+  }
+  ngOnInit() {
+    const animacion1 = this.animationCtrl.create()
+   .addElement(this.animacion1.nativeElement)
+   .duration(1500)
+   .iterations(Infinity)
+   .direction('alternate')
+   .fromTo('background', 'purple', 'var(--background)');
+
+   animacion1.play()
   }
 
 
