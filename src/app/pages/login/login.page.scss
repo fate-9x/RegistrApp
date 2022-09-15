@@ -1,30 +1,37 @@
+*{
+    font-family: 'Krub', sans-serif;
+    font-family: 'Nunito', sans-serif;
+}
+
 ion-content {
     --padding-top: 20px;
     --padding-bottom: 20px;
     --padding-end: 20px;
     --padding-start: 20px;
-    --background: #000;
+    --background: linear-gradient(to top left, #6b000b, #4e204d);
+    
 }
 
 ion-item {
     --padding-bottom: 10px;
 }
 ion-toolbar {
-    --background: #000;
+    --background: #17181C;
     display: flex;
     text-align: center;
 }
 
 span {
     color: #000;
-    background-color: #F57F17;
-    padding: .5rem;
-    border-radius: 1rem;
+    background-color: #FA4753;
+    padding: 0.2rem;
+    
 }
 
+
 .card {
-    --background: #000000; // Color Background Card
-    box-shadow: .3rem .1rem .3rem .3rem #F57F17; // Color Sombra
+    --background: #17181C; // Color Background Card
+    box-shadow: 0 0 .6rem #17181C; // Color Sombra
     border-radius: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -35,6 +42,7 @@ span {
     margin: 1rem 1rem;
     width: 90%;
     height: 4.5rem;
+    position: absolute;
 }
 
 .headerCard {
@@ -42,11 +50,12 @@ span {
     font-size: 1.3rem;
     font-weight: 800;
     color: #fff;
-    background-color: #000000; // Color Titulo
+    background-color: #17181C; // Color Titulo
     border-radius: 1rem;
     padding: .5rem;
     text-align: center;
-    border: .2rem solid #fff; // Color Borde Boton
+    //border: .2rem solid #fff; // Color Borde Boton
+    border-bottom: .3rem solid #fff;
 }
 
 
@@ -70,12 +79,12 @@ span {
     width: 10rem;
     border-radius: 4px;
     text-transform: uppercase;
-    background-color: transparent; // Color Background Boton
+    background-color: #17181C; // Color Background Boton
     color: #fff;
     font-size: 1rem;
     overflow: hidden;
     transition: all 500ms ease;
-    border: 2px solid #F57F17; // Color Borde Boton
+    border: 2px solid #FA4753; // Color Borde Boton
     z-index: 0;
     font-weight: 600;
     cursor: pointer;
@@ -93,7 +102,7 @@ span {
     right: 0;
     top: 0;
     margin: auto;
-    background-color: #FFD600;
+    background-color: #FA4753;
     --background: rgba(0, 0, 0, 1);
     transition: all 500ms ease;
     z-index: -1;
@@ -106,7 +115,7 @@ span {
     height: 150%;
     transition: all 750ms ease;
     transform: rotate(45deg);
-    box-shadow: 0 0 10px #FFD600, 0 0 20px #FFD600, 0 0 20px #FFD600;
+    box-shadow: 0 0 10px #FA4753, 0 0 20px #FA4753, 0 0 20px #FA4753;
 }
 
 .btn:hover::before {
