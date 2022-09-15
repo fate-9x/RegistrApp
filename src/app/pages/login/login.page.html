@@ -1,33 +1,33 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Login</ion-title>
+    <ion-title>Registr<span>App</span></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card>
+  <ion-card class="card">
     <ion-card-header>
-      <ion-title class="title">Iniciar <br> Sesion</ion-title>
+      <ion-title class="headerCard">Iniciar <span>Sesion</span> </ion-title>
     </ion-card-header>
     <ion-card-content>
-      <ion-item lines="full">
+      <ion-item lines="full" class="inputItem">
         <ion-label position="floating">Usuario</ion-label>
-        <!-- Usamos ngModel para indicarle al input el objeto a utilizar-->
-        <ion-input type="text" [(ngModel)]="user.usuario" minlength="3" maxlength="8"></ion-input>
+        
+        <ion-input type="text" [(ngModel)]="user.usuario" minlength="4" maxlength="20"></ion-input>
       </ion-item>
-      <ion-item lines="full">
-        <!-- Usamos ngModel para indicarle al input el objeto a utilizar-->
+      <ion-item lines="full" class="inputItem">
+        
         <ion-label position="floating">Contraseña</ion-label>
-        <ion-input type="password" [(ngModel)]="user.password" minlength="4" maxlength="18"></ion-input>
+        <ion-input type="password" [(ngModel)]="user.password" minlength="4" maxlength="20"></ion-input>
       </ion-item>
       <ion-row>
         <ion-col>
-          <ion-button class="reestablecerContrasena" size="small" color="light" (click)="resetPassword()">Reestablecer Contraseña
+          <ion-button class="btn btnIon" (click)="resetPassword()">Reestablecer Contraseña
           </ion-button>
         </ion-col>
         <ion-col>
-          <!-- Indicamos mediante el (click) la funcion a quien referenciara-->
-          <ion-button expand="full" (click)="login()">Ingresar</ion-button>
+
+          <ion-button class="btn btnIon" (click)="login()">Ingresar</ion-button>
         </ion-col>
       </ion-row>
     </ion-card-content>
@@ -35,3 +35,6 @@
   </ion-card>
   
 </ion-content>
+
+
+

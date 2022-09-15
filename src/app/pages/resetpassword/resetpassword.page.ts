@@ -19,8 +19,6 @@ export class ResetpasswordPage implements OnInit {
   }
 
   mostrarMensaje(){
-
-    console.log(this.user);
     
 
     for (var [usr] of Object.entries(this.user)) {
@@ -44,6 +42,5 @@ export class ResetpasswordPage implements OnInit {
     });
     toast.present();
 
-    
   }
 }
