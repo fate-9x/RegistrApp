@@ -1,0 +1,151 @@
+$html-font-size: 16px;
+$rojo: #FA4753;
+
+@function stripUnit($value) {
+    @return $value / ($value * 0 + 1);
+}
+@function rem($pxValue) {
+    @return #{stripUnit($pxValue) / stripUnit($html-font-size)}rem;
+}
+
+*{
+    font-family: 'Krub', sans-serif;
+    font-family: 'Nunito', sans-serif;
+}
+
+
+ion-content {
+    --padding-top: 20px;
+    --padding-bottom: 20px;
+    --padding-end: 20px;
+    --padding-start: 20px;
+    --background: linear-gradient(to top left, #6b000b, #4e204d);
+    
+}
+
+ion-item {
+    --padding-bottom: 10px;
+}
+ion-toolbar {
+    --background: #17181C;
+    display: flex;
+    text-align: center;
+}
+
+span {
+    color: #000;
+    background-color: $rojo;
+    padding: 0.2rem;
+    
+}
+
+
+.card {
+    --background: #17181C; // Color Background Card
+    box-shadow: 0 0 .6rem #17181C; // Color Sombra
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 95%;
+}
+
+.headerCard.ios {
+    margin: 1rem 1rem;
+    width: 90%;
+    height: 4.5rem;
+    position: absolute;
+}
+
+.headerCard {
+
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #fff;
+    background-color: #17181C; // Color Titulo
+    border-radius: 1rem;
+    padding: .5rem;
+    text-align: center;
+    //border: .2rem solid #fff; // Color Borde Boton
+    border-bottom: .3rem solid #fff;
+}
+
+
+
+.inputItem {
+    margin: 2rem 0;
+    --background:transparent;
+}
+.inputItem.ios {
+    top: 2.5rem;
+    margin-top: 2rem;
+    --background:transparent;
+}
+
+/************ BOTONES ************/
+.btn {
+    margin-top: 2rem;
+    position: relative;
+    display: block;
+    height: 3rem;
+    width: 10rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    background-color: #17181C; // Color Background Boton
+    color: #fff;
+    font-size: 1rem;
+    overflow: hidden;
+    transition: all 500ms ease;
+    border: 2px solid $rojo; // Color Borde Boton
+    z-index: 0;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn.ios {
+    margin-top: 1.5rem;
+}
+
+
+.btn::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    background-color: $rojo;
+    --background: rgba(0, 0, 0, 1);
+    transition: all 500ms ease;
+    z-index: -1;
+}
+
+.btn::before {
+    left: -520px;
+    right: 0;
+    width: 100%;
+    height: 150%;
+    transition: all 750ms ease;
+    transform: rotate(45deg);
+    box-shadow: 0 0 10px $rojo, 0 0 20px $rojo, 0 0 20px $rojo;
+}
+
+.btn:hover::before {
+    left: 520px;
+}
+
+.btnIon, .btnIon:host{
+    width: auto;
+    height: 3rem;
+    font-size: .7rem;
+    font-weight: 300;
+    --background: transparent;
+    --background-hover: transparent;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+
+
+
+/************ END BOTONES ************/
+
