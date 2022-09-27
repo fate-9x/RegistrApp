@@ -1,40 +1,27 @@
-<!-- Comienza el Header -->
-<ion-header [translucent]="true">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Krub:wght@600&family=Nunito:ital,wght@0,300;1,400&display=swap"
+  rel="stylesheet">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      RegistrApp
-    </ion-title>
+    <ion-title>Registr<span>App</span></ion-title>
   </ion-toolbar>
 </ion-header>
 <!-- Termina el Header -->
 
 <!-- Comienza el Content -->
-<ion-content [fullscreen]="true">  
-  <ion-title class="ion-padding-top ion-text-center">
-    <ion-label>
-      <h1 class="title animacion1" #animacion1>Bienvenido <br> {{user.usuario}}</h1>
-    </ion-label>
-  </ion-title>
-
-  <ion-card>
+<ion-content [fullscreen]="true">
+  <ion-card class="card">
     <ion-card-header>
-      <ion-card-title>Ingrese la clase a tomar asistencia</ion-card-title>
+      <ion-card-title class="headerCard">Bienvenido <br> {{user.usuario}}</ion-card-title>
     </ion-card-header>
-  
     <ion-card-content>
-      <ion-item class="ion-padding-horizontal">
-        <ion-label position="stacked" class="ion-padding-bottom">Clase</ion-label>
-        <ion-select placeholder="Seleccione clase" [(ngModel)]="data.seccion">
-          <ion-select-option *ngFor="let cla of clases" [value]="cla.seccion">{{cla.asignatura}}</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-button (click)="mostrarHorario()">
-          Ver Horario
-        </ion-button>
-      </ion-item>
-
-      
+      <ion-row class="justify-center">
+        <img src="../../../assets/img/RegistrAppQr.png" alt="QR" class="imgQr">
+      </ion-row>
+      <ion-row class="justify-center">
+        <ion-button class="btn btnIon">Abrir Camara</ion-button>
+      </ion-row>
     </ion-card-content>
   </ion-card>
 
@@ -46,4 +33,4 @@
     </ng-template>
   </ion-modal>
 </ion-content> -->
-<!-- Termina el Content -->
+  <!-- Termina el Content -->
