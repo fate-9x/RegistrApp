@@ -19,14 +19,6 @@ export class HomePage {
     seccion:"",
   }; // Generamos una variable Any (permite cualquier valor)
 
-  clases:any[]=[
-    {id:1, asignatura: "Programacion de aplicaciones moviles", seccion:"PGY4121-003D", horarios: ["Lunes 8:40 a 10:50", "Jueves 11:41 a 13:10"]},
-
-    {id:1, asignatura: "Calidad de Software", seccion:"CSY4111-003D", horarios: ["Lunes 11:01 a 12:20", "Jueves 9:30 a 10:50"]},
-
-    {id:1, asignatura: "Ingles Intermedio", seccion:"INI5111-013D", horarios: ["Lunes 12:31 a 13:50", "Martes 9:31 a 10:50", "Miercoles 17:01 a 18:20", "Jueves 14:01 a 15:20"]},
-  ]
-
   // niveles:any[]=[
   //   {id:1,nivel:"Basica Incompleta"},
   //   {id:2,nivel:"Basica Completa"},
@@ -54,14 +46,6 @@ export class HomePage {
     });
   }
   ngOnInit() {
-    const animacion1 = this.animationCtrl.create()
-   .addElement(this.animacion1.nativeElement)
-   .duration(1500)
-   .iterations(Infinity)
-   .direction('alternate')
-   .fromTo('background', 'purple', 'var(--background)');
-
-   animacion1.play()
   }
 
 

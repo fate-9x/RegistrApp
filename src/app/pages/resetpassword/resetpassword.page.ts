@@ -9,8 +9,8 @@ import { ToastController } from '@ionic/angular';
 })
 export class ResetpasswordPage implements OnInit {
 
-  user:{
-    usuario: "";
+  user = {
+    usuario: "",
   };
 
   constructor(public toastController: ToastController, private router: Router,) { }
@@ -18,22 +18,26 @@ export class ResetpasswordPage implements OnInit {
   ngOnInit() {
   }
 
-  mostrarMensaje(){
-    
+  mostrarMensaje() {
 
-    for (var [usr] of Object.entries(this.user)) {
+    if (this.validateModel(this.user)) {
+      this.presentToast('Se ha enviado un correo para reestablecer su contraseña.');
+      this.router.navigate(['/login']);
+    } else {
+      this.presentToast("Porfavor, rellene el campo vacio.");
+    }
+  }
+
+  validateModel(model: any) {
+    // Recorro todas las entradas que me entrega Object entries y obtengo su clave, valor
+    for (var [field, value] of Object.entries(model)) {
       //verifico campo vacio
-      if (usr == "") {
-        
-        this.presentToast("Porfavor rellene el campo Usuario.");
-        
+      if (value == "" || value == null || value == undefined || value == " ") {
         return false;
       }
+      console.log(value);
     }
-    this.presentToast('Se ha enviado un correo para reestablecer su contraseña.');
-
-    this.router.navigate(['/login']);
-      
+    return true;
   }
   async presentToast(msg: string, duration?: number) {
     const toast = await this.toastController.create({

@@ -24,8 +24,9 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
   login() {
+
+    
     if (this.validateModel(this.user)) {
-      this.presentToast("Bienvenido", 3000)
       // Se declara e instancia un elemento de tipo NavigationExtras
       let navigationExtras: NavigationExtras = {
         state: {
@@ -34,7 +35,7 @@ export class LoginPage implements OnInit {
       };
       this.router.navigate(['/home'], navigationExtras); // navegamos hacia el Home y enviamos información adicional
     } else {
-      this.presentToast("Falta: " + this.field);
+      this.presentToast("Rellene el campo: " + this.field);
     }
 
   }
@@ -59,6 +60,7 @@ export class LoginPage implements OnInit {
       if (value == "") {
         this.field = key;
         return false;
+        
       }
     }
     return true;

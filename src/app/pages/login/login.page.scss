@@ -33,10 +33,7 @@ ion-toolbar {
 }
 
 span {
-    color: #000;
-    background-color: $rojo;
-    padding: 0.2rem;
-    
+    color: $rojo;
 }
 
 
@@ -46,7 +43,6 @@ span {
     border-radius: 1.5rem;
     display: flex;
     flex-direction: column;
-    height: 95%;
 }
 
 .headerCard.ios {
@@ -84,16 +80,13 @@ span {
 /************ BOTONES ************/
 .btn {
     margin-top: 2rem;
-    position: relative;
-    display: block;
     height: 3rem;
-    width: 10rem;
+    display: flex;
+    flex-direction: column;
     border-radius: 4px;
     text-transform: uppercase;
     background-color: #17181C; // Color Background Boton
     color: #fff;
-    font-size: 1rem;
-    overflow: hidden;
     transition: all 500ms ease;
     border: 2px solid $rojo; // Color Borde Boton
     z-index: 0;
@@ -103,34 +96,6 @@ span {
 
 .btn.ios {
     margin-top: 1.5rem;
-}
-
-
-.btn::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    margin: auto;
-    background-color: $rojo;
-    --background: rgba(0, 0, 0, 1);
-    transition: all 500ms ease;
-    z-index: -1;
-}
-
-.btn::before {
-    left: -520px;
-    right: 0;
-    width: 100%;
-    height: 150%;
-    transition: all 750ms ease;
-    transform: rotate(45deg);
-    box-shadow: 0 0 10px $rojo, 0 0 20px $rojo, 0 0 20px $rojo;
-}
-
-.btn:hover::before {
-    left: 520px;
 }
 
 .btnIon, .btnIon:host{
