@@ -1,0 +1,16 @@
+--SqLite
+npm install cordova-sqlite-storage
+npm install @awesome-cordova-plugins/sqlite
+--Barcode
+npm install phonegap-plugin-barcodescanner
+npm install @awesome-cordova-plugins/barcode-scanner
+
+--JsQr
+--https://devdactic.com/pwa-qr-scanner-ionic
+npm install jsqr
+
+-- https://www.npmjs.com/package/angularx-qrcode
+npm i angularx-qrcode
+
+--BARCODE community
+npm install @capacitor-community/barcode-scanner
