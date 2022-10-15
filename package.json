@@ -30,6 +30,7 @@
     "@ionic/angular": "^6.1.9",
     "@ionic/storage-angular": "^3.0.6",
     "angularx-qrcode": "^14.0.0",
+    "angularx-qrcode": "^14.0.0",
     "cordova-sqlite-storage": "^6.0.0",
     "ionicons": "^6.0.3",
     "jsqr": "^1.4.0",
