@@ -1,9 +1,12 @@
 /** Importaciones de librerias a usar */
 
 import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { AnimationController, ToastController } from '@ionic/angular';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { UserService } from 'src/app/services/user.service';
+import { TabsPage } from '../tabs/tabs.page';
+
 // Decorador Componente este indica que el Home Page es un Componente
 @Component({
   selector: 'app-home', // Nombre del selector como <input> o <main-page>
@@ -12,11 +15,10 @@ import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 })
 export class HomePage implements OnDestroy {
 
-  @ViewChild('animacion1', { read: ElementRef, static: true }) animacion1: ElementRef;
-
+  user: any;
 
   // https://www.npmjs.com/package/angularx-qrcode
-  qrCodeString = 'This is a secret qr code message';
+  qrCodeString = 'COdigo qr';
   scannedResult: any;
   content_visibility = '';
   // Generamos una variable Any (permite cualquier valor)
@@ -38,8 +40,18 @@ export class HomePage implements OnDestroy {
    * : Indica que el identificador sera de la clase posterior a los : puntos
    * 
    */
-  constructor(private activeroute: ActivatedRoute, private router: Router, public toastController: ToastController, private animationCtrl: AnimationController) {
-    this.content_visibility = "show";
+  constructor(private activeroute: ActivatedRoute, private router: Router, public toastController: ToastController, private animationCtrl: AnimationController, private userService: UserService) {
+    this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda
+      if (this.router.getCurrentNavigation().extras.state) { // Validamos que en la navegacion actual tenga extras
+        this.content_visibility = "show";
+        this.user = this.router.getCurrentNavigation().extras.state.user; // Si tiene extra rescata lo enviado
+        this.getUser();
+      }
+    });
+  }
+
+  getUser() {
+    this.user = this.userService.getUsers(this.user.usuario)
   }
 
   ngOnInit() {

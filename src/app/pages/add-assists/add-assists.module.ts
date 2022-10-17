@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ProfilePageRoutingModule } from './profile-routing.module';
+import { AddAssistsPageRoutingModule } from './add-assists-routing.module';
 
-import { ProfilePage } from './profile.page';
+import { AddAssistsPage } from './add-assists.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ProfilePageRoutingModule
+    AddAssistsPageRoutingModule
   ],
-  declarations: [ProfilePage]
+  declarations: [AddAssistsPage]
 })
-export class ProfilePageModule {}
+export class AddAssistsPageModule {}

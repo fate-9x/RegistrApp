@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registr<span>App</span></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="card">
+    <ion-card-header>
+      <ion-title class="headerCard">Añadir Asignatura</ion-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item lines="full" class="inputItem">
+        
+        <ion-label position="floating">Nombre Asignatura</ion-label>
+        <ion-input type="text" [(ngModel)]="name" minlength="4" maxlength="40"></ion-input>
+      </ion-item>
+      <ion-item lines="full" class="inputItem">
+        
+        <ion-label position="floating">Asistencia</ion-label>
+        <ion-input type="number" [(ngModel)]="assists"></ion-input>
+      </ion-item>
+      <ion-item lines="full" class="inputItem">
+        
+        <ion-label position="floating">Seccion</ion-label>
+        <ion-input type="text" [(ngModel)]="section" minlength="4" maxlength="20"></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button class="btn btnIon" (click)="editar()">Modificar Asignatura</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

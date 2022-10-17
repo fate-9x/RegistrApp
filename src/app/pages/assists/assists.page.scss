@@ -1,5 +1,6 @@
 $html-font-size: 16px;
 $rojo: #FA4753;
+$negro: #17181C;
 
 @function stripUnit($value) {
     @return $value / ($value * 0 + 1);
@@ -26,4 +27,85 @@ ion-back-button {
 
 span {
   color: $rojo;
+}
+
+ion-item {
+  --padding-start: 0;
+  border: 2px solid $rojo;
+}
+
+/* iOS places the subtitle above the title */
+ion-card-header.ios {
+  display: flex;
+  flex-flow: column-reverse;
+}
+
+ion-content {
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+  --padding-end: 20px;
+  --padding-start: 20px;
+  --background: linear-gradient(to top left, #6b000b, #4e204d);
+  
+}
+ion-fab-button {
+  --background: #17181C;
+}
+
+.justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  --background: #17181C; // Color Background Card
+  box-shadow: 0 0 .6rem #17181C; // Color Sombra
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.headerCard {
+
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #fff;
+  background-color: #17181C; // Color Titulo
+  border-radius: 1rem;
+  padding: .5rem;
+  text-align: center;
+  //border: .2rem solid #fff; // Color Borde Boton
+  border-bottom: .3rem solid #fff;
+}
+
+.btn {
+  margin-top: 3rem;
+  height: 3rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  text-transform: uppercase;
+  background-color: #17181C; // Color Background Boton
+  color: #fff;
+  transition: all 500ms ease;
+  border: 2px solid $rojo; // Color Borde Boton
+  z-index: 0;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn.ios {
+  margin-top: 1.5rem;
+}
+
+.btnIon, .btnIon:host{
+  width: auto;
+  height: 3rem;
+  font-size: .7rem;
+  font-weight: 300;
+  --background: transparent;
+  --background-hover: transparent;
+  margin-bottom: 0;
+  margin-top: 0;
 }
