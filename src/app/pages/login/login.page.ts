@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-
+import { LocalService } from 'src/app/services/local.service';
+import { UserService } from '../../services/user.service';
+import { AuthGuardService } from '../../services/auth-guard.service';
+import { User } from 'src/app/classes/user';
 
 @Component({
   selector: 'app-login',
@@ -9,41 +12,66 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+
   /**
    * Se genera el modelo user con dos claves
    * cada clave tiene su valor inicial
    */
-  user = {
-    usuario: "",
-    password: ""
-  }
-  //variable para indicar el campo que falta
-  field: string = "";
-  constructor(private router: Router, public toastController: ToastController) { } // Se debe instanciar
 
+  usuario: string;
+  password: string;
+
+
+  constructor(private router: Router, public toastController: ToastController, private userService: UserService, private localService: LocalService, private auth: AuthGuardService) {
+
+  }
   ngOnInit() {
   }
-  login() {
 
-    
-    if (this.validateModel(this.user)) {
-      // Se declara e instancia un elemento de tipo NavigationExtras
-      let navigationExtras: NavigationExtras = {
-        state: {
-          user: this.user // Al estado se asignamos un objeto con clave y valor
-        }
-      };
-      this.router.navigate(['/tabs/home'], navigationExtras); // navegamos hacia el Home y enviamos información adicional
+
+  async login() {
+    if (this.usuario == "" || this.usuario == undefined || this.password == "" || this.password == undefined) {
+      return this.presentToast("Porfavor rellene todos los campos");
     } else {
-      this.presentToast("Rellene el campo: " + this.field);
+
+      this.userService.getUsers().subscribe((data) => {
+
+
+        for (let users of data.alumnos) {
+
+          if (users.username == this.usuario && users.password == this.password) {
+
+            let navigationExtras: NavigationExtras = {
+              state: {
+                user: {
+                  "username": users.username,
+                  "name": users.nombre
+                }
+              }
+            }
+            this.auth.authenticated = true;
+            this.localService.addUsers(users.username, users.nombre);
+            this.router.navigate(['/tabs'], navigationExtras);
+            return;
+          }
+        }
+
+        this.auth.authenticated = false;
+        this.presentToast('Usuario o contraseña incorrectos');
+
+      })
     }
+
 
   }
 
   resetPassword() {
     let navigationExtras: NavigationExtras = {
       state: {
-        user: this.user // Al estado se asignamos un objeto con clave y valor
+        user: {
+          usuario: this.usuario,
+          password: this.password
+        } // Al estado se asignamos un objeto con clave y valor
       }
     };
     this.router.navigate(['/resetpassword'], navigationExtras);
@@ -53,22 +81,10 @@ export class LoginPage implements OnInit {
    * validateModel sirve para validar que se ingrese algo en los
    * campos del html mediante su modelo
    */
-  validateModel(model: any) {
-    // Recorro todas las entradas que me entrega Object entries y obtengo su clave, valor
-    for (var [key, value] of Object.entries(model)) {
-      //verifico campo vacio
-      if (value == "") {
-        this.field = key;
-        return false;
-        
-      }
-    }
-    return true;
-  }
   async presentToast(msg: string, duration?: number) {
     const toast = await this.toastController.create({
       message: msg,
-      duration: duration ? duration : 2000 //si no viene el parámetro el tiempo es 2000
+      duration: duration ? duration : 4000 //si no viene el parámetro el tiempo es 2000
     });
     toast.present();
   }
