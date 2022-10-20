@@ -29,3 +29,16 @@ body.scanner-active {
     --background: transparent;
     --ion-background-color: transparent;
   }
+/* Theme variables */
+
+* {
+  color: #FFB800;
+}
+
+ion-tab-bar,
+ion-tabs,
+ion-card,
+ion-card-header,
+ion-card-content {
+  --background: #00203f;
+}

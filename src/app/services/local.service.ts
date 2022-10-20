@@ -123,6 +123,7 @@ export class LocalService {
     return this.db.executeSql('DELETE FROM auth WHERE username = ?',[username])
     .then(()=>{
       this.loadUser();
+      return true;
     });
   }
 

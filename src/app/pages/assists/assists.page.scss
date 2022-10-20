@@ -1,77 +1,82 @@
 $html-font-size: 16px;
-$rojo: #FA4753;
-$negro: #17181C;
+$primary: #FFB800;
+$secondary: #012C56;
+$secondary-dark: #00203f;
+$background: #17181C;
 
 @function stripUnit($value) {
-    @return $value / ($value * 0 + 1);
+  @return $value / ($value * 0 + 1);
 }
+
 @function rem($pxValue) {
-    @return #{stripUnit($pxValue) / stripUnit($html-font-size)}rem;
+  @return #{stripUnit($pxValue) / stripUnit($html-font-size)}rem;
 }
 
-*{
-    font-family: 'Krub', sans-serif;
-    font-family: 'Nunito', sans-serif;
+* {
+  font-family: 'Merriweather', serif;
 }
 
-ion-toolbar {
-  --background: #17181C;
-  display: flex;
-  text-align: center;
-}
-
-ion-back-button {
-  --color: #FA4753;
-  position: absolute;
-}
-
-span {
-  color: $rojo;
-}
-
-ion-item {
-  --padding-start: 0;
-  border: 2px solid $rojo;
-}
-
-/* iOS places the subtitle above the title */
-ion-card-header.ios {
-  display: flex;
-  flex-flow: column-reverse;
-}
 
 ion-content {
   --padding-top: 20px;
   --padding-bottom: 20px;
   --padding-end: 20px;
   --padding-start: 20px;
-  --background: linear-gradient(to top left, #6b000b, #4e204d);
-  
-}
-ion-fab-button {
-  --background: #17181C;
+  // --background: linear-gradient(to top left, #6b000b, #4e204d);
+  --background: url(../../../assets/img/background.jpeg);
+
 }
 
-.justify-center {
+ion-item {
+  --padding-bottom: 10px;
+  --background: #00203f;
+}
+
+ion-toolbar {
+  --background: #00203f;
   display: flex;
-  justify-content: center;
+  text-align: center;
+}
+
+ion-title {
+  font-weight: bold;
+  color: #fff;
+}
+
+span {
+  color: $primary;
+  font-weight: bold;
+}
+
+ion-card-header {
+  --background: #00203f;
+}
+
+ion-list {
+  background: $secondary-dark;
 }
 
 .card {
-  --background: #17181C; // Color Background Card
+  --background: #00203f; // Color Background Card
   box-shadow: 0 0 .6rem #17181C; // Color Sombra
   border-radius: 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+}
+
+.headerCard.ios {
+  margin: 1rem 1rem;
+  width: 90%;
+  height: 4.5rem;
+  position: absolute;
 }
 
 .headerCard {
 
   font-size: 1.3rem;
   font-weight: 800;
-  color: #fff;
-  background-color: #17181C; // Color Titulo
+  color: $primary;
+  background-color: $secondary-dark; // Color Titulo
   border-radius: 1rem;
   padding: .5rem;
   text-align: center;
@@ -79,33 +84,54 @@ ion-fab-button {
   border-bottom: .3rem solid #fff;
 }
 
+
+
+.inputItem {
+  margin: 2rem 0;
+  --background: transparent;
+}
+
+.inputItem.ios {
+  top: 2.5rem;
+  margin-top: 2rem;
+  --background: transparent;
+}
+
+/************ BOTONES ************/
 .btn {
-  margin-top: 3rem;
+  margin-top: 2rem;
   height: 3rem;
   display: flex;
   flex-direction: column;
-  border-radius: 4px;
+  border-radius: 5px;
   text-transform: uppercase;
-  background-color: #17181C; // Color Background Boton
-  color: #fff;
+  background-color: $primary; // Color Background Boton
+  color: $secondary-dark; // Color Texto Boton
   transition: all 500ms ease;
-  border: 2px solid $rojo; // Color Borde Boton
+  border: 1.5px solid #17181C; // Color Borde Boton
   z-index: 0;
-  font-weight: 600;
+  font-weight: bold;
   cursor: pointer;
+
 }
 
 .btn.ios {
   margin-top: 1.5rem;
 }
 
-.btnIon, .btnIon:host{
+.btnIon,
+.btnIon:host {
   width: auto;
   height: 3rem;
   font-size: .7rem;
-  font-weight: 300;
+  font-weight: bold;
   --background: transparent;
   --background-hover: transparent;
   margin-bottom: 0;
   margin-top: 0;
 }
+
+
+
+
+/************ END BOTONES ************/

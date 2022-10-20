@@ -1,5 +1,8 @@
 $html-font-size: 16px;
-$rojo: #FA4753;
+$primary: #FFB800;
+$secondary: #012C56;
+$secondary-dark: #00203f;
+$background: #17181C;
 
 @function stripUnit($value) {
     @return $value / ($value * 0 + 1);
@@ -9,8 +12,7 @@ $rojo: #FA4753;
 }
 
 *{
-    font-family: 'Krub', sans-serif;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Merriweather', serif;
 }
 
 
@@ -19,7 +21,8 @@ ion-content {
     --padding-bottom: 20px;
     --padding-end: 20px;
     --padding-start: 20px;
-    --background: linear-gradient(to top left, #6b000b, #4e204d);
+    // --background: linear-gradient(to top left, #6b000b, #4e204d);
+    --background: url(../../../assets/img/background.jpeg);
     
 }
 
@@ -27,18 +30,27 @@ ion-item {
     --padding-bottom: 10px;
 }
 ion-toolbar {
-    --background: #17181C;
+    --background: #00203f;
     display: flex;
     text-align: center;
 }
 
-span {
-    color: $rojo;
+ion-title {
+    font-weight: bold;
+    color: #fff;
 }
 
+span {
+    color: $primary;
+    font-weight: bold;
+}
+
+ion-card-header {
+    --background: #00203f;
+}
 
 .card {
-    --background: #17181C; // Color Background Card
+    --background: #00203f; // Color Background Card
     box-shadow: 0 0 .6rem #17181C; // Color Sombra
     border-radius: 1.5rem;
     display: flex;
@@ -56,8 +68,8 @@ span {
 
     font-size: 1.3rem;
     font-weight: 800;
-    color: #fff;
-    background-color: #17181C; // Color Titulo
+    color: $primary;
+    background-color: $secondary-dark; // Color Titulo
     border-radius: 1rem;
     padding: .5rem;
     text-align: center;
@@ -83,15 +95,16 @@ span {
     height: 3rem;
     display: flex;
     flex-direction: column;
-    border-radius: 4px;
+    border-radius: 5px;
     text-transform: uppercase;
-    background-color: #17181C; // Color Background Boton
-    color: #fff;
+    background-color: $primary; // Color Background Boton
+    color: $secondary-dark; // Color Texto Boton
     transition: all 500ms ease;
-    border: 2px solid $rojo; // Color Borde Boton
+    border: 1.5px solid #17181C; // Color Borde Boton
     z-index: 0;
-    font-weight: 600;
+    font-weight: bold;
     cursor: pointer;
+
 }
 
 .btn.ios {
@@ -102,10 +115,15 @@ span {
     width: auto;
     height: 3rem;
     font-size: .7rem;
-    font-weight: 300;
+    font-weight: bold;
     --background: transparent;
     --background-hover: transparent;
     margin-bottom: 0;
     margin-top: 0;
 }
+
+
+
+
+/************ END BOTONES ************/
 

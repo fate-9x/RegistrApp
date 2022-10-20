@@ -49,7 +49,7 @@ export class HomePage implements OnDestroy {
         this.user = this.router.getCurrentNavigation().extras.state.user; // Si tiene extra rescata lo enviado
 
         console.log("AAAAAA: " + this.user.name);
-        
+
       }
     });
   }
@@ -112,10 +112,13 @@ export class HomePage implements OnDestroy {
     this.content_visibility = '';
   }
 
-  logout(){
-    this.localService.deleteUser(this.user.username)
-    this.auth.authenticated = false;
-    this.router.navigate(['/login']);
+  logout() {
+    if (this.localService.deleteUser(this.user.username)) {
+      this.auth.authenticated = false;
+      this.router.navigate(['/login']);
+    } else {
+      this.presentToast("Error al cerrar sesion");
+    }
   }
 
   ngOnDestroy(): void {
@@ -128,5 +131,13 @@ export class HomePage implements OnDestroy {
   //     this.presentAlert("Error", "Debe ingresar Nombre y Apellido")
   //   }
   // }
+
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000
+    });
+    toast.present();
+  }
 
 }

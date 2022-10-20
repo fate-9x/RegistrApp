@@ -2,6 +2,11 @@ $html-font-size: 16px;
 $rojo: #FA4753;
 $gris: #17181C;
 
-.tab {
-    --background: $gris;
+
+@media (prefers-color-scheme: dark)
+{
+    .tab{
+        --background: $gris;
+    }
+    
 }

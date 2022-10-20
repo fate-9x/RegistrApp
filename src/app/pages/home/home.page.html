@@ -5,7 +5,7 @@
 </ion-header>
 <ion-content [fullscreen]="true" [style.visibility]="content_visibility">
 
-  <ion-card class="ion-text-center">
+  <ion-card class="ion-text-center card">
     <ion-card-header>
       <ion-card-title class="headerCard">Bienvenido <br> {{user.name}} </ion-card-title>
     </ion-card-header>
@@ -19,7 +19,12 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-button class="btn btnIon" (click)="logout()">Cerrar Sesión</ion-button>
+          <ion-button expand="block" class="btn btnIon" (click)="logout()">Cerrar Sesión</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" class="btn btnIon" [routerLink]="['/asdsadsa']" >404</ion-button>
         </ion-col>
       </ion-row>
     </ion-card-content>
