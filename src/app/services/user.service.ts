@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Students, Users } from '../interfaces/iuser';
 import { retry } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
@@ -8,8 +7,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-
-  alumnos: Users[] = [];
 
   constructor(private http: HttpClient) {
   }

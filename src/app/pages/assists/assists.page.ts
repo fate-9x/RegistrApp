@@ -24,7 +24,7 @@ export class AssistsPage implements OnInit {
     })
   }
 
-  editar(item) {
+  edit(item) {
     
     let navigationExtras: NavigationExtras = {
       state : {
@@ -38,7 +38,7 @@ export class AssistsPage implements OnInit {
     this.router.navigate(['/tabs/edit-assists'],navigationExtras);
   }
 
-  eliminar(item) {
+  delete(item) {
     this.dbService.deleteCourse(item.id);
     this.dbService.presentToast("Curso Eliminado");
   }

@@ -4,7 +4,6 @@ import { ToastController } from '@ionic/angular';
 import { LocalService } from 'src/app/services/local.service';
 import { UserService } from '../../services/user.service';
 import { AuthGuardService } from '../../services/auth-guard.service';
-import { User } from 'src/app/classes/user';
 
 @Component({
   selector: 'app-login',
@@ -12,11 +11,6 @@ import { User } from 'src/app/classes/user';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
-  /**
-   * Se genera el modelo user con dos claves
-   * cada clave tiene su valor inicial
-   */
 
   usuario: string;
   password: string;
@@ -71,16 +65,13 @@ export class LoginPage implements OnInit {
         user: {
           usuario: this.usuario,
           password: this.password
-        } // Al estado se asignamos un objeto con clave y valor
+        } 
       }
     };
     this.router.navigate(['/resetpassword'], navigationExtras);
   }
 
-  /**
-   * validateModel sirve para validar que se ingrese algo en los
-   * campos del html mediante su modelo
-   */
+
   async presentToast(msg: string, duration?: number) {
     const toast = await this.toastController.create({
       message: msg,
