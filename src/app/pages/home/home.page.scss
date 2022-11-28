@@ -66,15 +66,14 @@ ion-card-header {
 
 .headerCard {
 
-    font-size: 1.3rem;
+    font-size: 1.8rem;
     font-weight: 800;
     color: $primary;
     background-color: $secondary-dark; // Color Titulo
-    border-radius: 1rem;
     padding: .5rem;
     text-align: center;
     //border: .2rem solid #fff; // Color Borde Boton
-    border-bottom: .3rem solid #fff;
+    border-bottom: .2rem solid $primary;
 }
 
 
@@ -114,7 +113,8 @@ ion-card-header {
 .btnIon, .btnIon:host{
     width: auto;
     height: 3rem;
-    font-size: .7rem;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 1rem;
     font-weight: bold;
     --background: transparent;
     --background-hover: transparent;

@@ -25,7 +25,6 @@ const routes: Routes = [
         loadChildren: () => import('../edit-assists/edit-assists.module').then( m => m.EditAssistsPageModule)
       }
     
-      
     ],
   },
   {

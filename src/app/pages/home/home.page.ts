@@ -1,13 +1,12 @@
 /** Importaciones de librerias a usar */
 
-import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
-import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { AnimationController, ToastController } from '@ionic/angular';
+import { Component, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
-import { UserService } from 'src/app/services/user.service';
-import { TabsPage } from '../tabs/tabs.page';
 import { AuthGuardService } from 'src/app/services/auth-guard.service';
 import { LocalService } from 'src/app/services/local.service';
+import { EmailComposer, EmailComposerOptions } from '@ionic-native/email-composer/ngx';
 
 // Decorador Componente este indica que el Home Page es un Componente
 @Component({
@@ -20,8 +19,9 @@ export class HomePage implements OnDestroy {
   user: any;
 
   // https://www.npmjs.com/package/angularx-qrcode
+  scanning = false;
   qrCodeString = 'COdigo qr';
-  scannedResult: any;
+  scannedResult: string;
   content_visibility = '';
   // Generamos una variable Any (permite cualquier valor)
 
@@ -42,7 +42,7 @@ export class HomePage implements OnDestroy {
    * : Indica que el identificador sera de la clase posterior a los : puntos
    * 
    */
-  constructor(private activeroute: ActivatedRoute, private router: Router, public toastController: ToastController, private localService: LocalService, private auth: AuthGuardService) {
+  constructor(private activeroute: ActivatedRoute, private router: Router, public toastController: ToastController, private localService: LocalService, private auth: AuthGuardService, private emailComposer: EmailComposer) {
     this.activeroute.queryParams.subscribe(params => { // Utilizamos lambda
       if (this.router.getCurrentNavigation().extras.state) { // Validamos que en la navegacion actual tenga extras
         this.content_visibility = "show";
@@ -55,6 +55,23 @@ export class HomePage implements OnDestroy {
   }
 
   ngOnInit() {
+  }
+
+
+  async openEmail() {
+
+    let result = JSON.parse(this.scannedResult);
+
+    if(result.correo != "") {
+      const email = {
+        app: 'gmail',
+        to: result.correo,
+        subject: 'Asistencia QR',
+        body: 'Mensaje de prueba'
+      };
+  
+      this.emailComposer.open(email);
+    }
   }
 
 
@@ -87,6 +104,7 @@ export class HomePage implements OnDestroy {
       if (!permission) {
         return;
       }
+      this.scanning = true;
       await BarcodeScanner.hideBackground();
       document.querySelector('body').classList.add('scanner-active');
       this.content_visibility = 'hidden';
@@ -94,10 +112,11 @@ export class HomePage implements OnDestroy {
       console.log(result);
       BarcodeScanner.showBackground();
       document.querySelector('body').classList.remove('scanner-active');
+      this.scanning = false;
       this.content_visibility = '';
       if (result?.hasContent) {
         this.scannedResult = result.content;
-        console.log(this.scannedResult);
+        this.openEmail();
       }
     } catch (e) {
       console.log(e);
@@ -106,6 +125,7 @@ export class HomePage implements OnDestroy {
   }
 
   stopScan() {
+    this.scanning = false;
     BarcodeScanner.showBackground();
     BarcodeScanner.stopScan();
     document.querySelector('body').classList.remove('scanner-active');

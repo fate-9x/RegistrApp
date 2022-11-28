@@ -30,6 +30,10 @@ ion-content {
 ion-item {
   --padding-bottom: 10px;
   --background: #00203f;
+  text-align: center;
+}
+ion-label {
+  padding : 0 4px;
 }
 
 ion-toolbar {
