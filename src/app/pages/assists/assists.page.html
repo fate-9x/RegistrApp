@@ -12,21 +12,22 @@
 
       <ion-list>
 
-        <ion-item *ngFor="let c of courses">
-          <ion-row>
-            <ion-col>
-              <ion-label>Asignatura: {{c.name}}</ion-label>
-              <ion-label>Asistencia: {{c.assists}}</ion-label>
+        <ion-item *ngFor="let c of courses" class="container">
 
-            </ion-col>
-            <ion-fab-button (click)="edit(c)">
-              <ion-icon name="pencil"></ion-icon>
-            </ion-fab-button>
-
-            <ion-fab-button (click)="delete(c)">
-              <ion-icon name="trash"></ion-icon>
-            </ion-fab-button>
-          </ion-row>
+          <div class="grid">
+            <div class="labels" >
+              <ion-label class="labelItem">Asignatura: {{c.name}}</ion-label>
+              <ion-label class="labelItem">Asistencia: {{c.assists}}</ion-label>
+            </div>
+            <div class="buttons" >
+              <ion-button (click)="edit(c)">
+                <ion-icon name="pencil"></ion-icon>
+              </ion-button>
+              <ion-button (click)="delete(c)">
+                <ion-icon name="trash"></ion-icon>
+              </ion-button>
+            </div>
+          </div>
         </ion-item>
 
       </ion-list>

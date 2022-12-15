@@ -139,3 +139,28 @@ ion-list {
 
 
 /************ END BOTONES ************/
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: #FFB800 2px solid;
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+}
+
+.labels {
+  grid-column: 1 / 5;
+  grid-row: 1 / 2;
+}
+
+.buttons {
+  grid-column: 2 / 4;
+}
