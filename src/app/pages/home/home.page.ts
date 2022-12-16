@@ -7,6 +7,7 @@ import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { AuthGuardService } from 'src/app/services/auth-guard.service';
 import { LocalService } from 'src/app/services/local.service';
 import { EmailComposer, EmailComposerOptions } from '@ionic-native/email-composer/ngx';
+import { Course } from 'src/app/classes/course';
 
 // Decorador Componente este indica que el Home Page es un Componente
 @Component({
@@ -23,6 +24,12 @@ export class HomePage implements OnDestroy {
   qrCodeString = 'COdigo qr';
   scannedResult: string;
   content_visibility = '';
+
+  courses: Course[];
+  id = "";
+  name = ""
+  assists = 0;
+  section = ""
   // Generamos una variable Any (permite cualquier valor)
 
   // niveles:any[]=[
@@ -57,21 +64,55 @@ export class HomePage implements OnDestroy {
   ngOnInit() {
   }
 
+  validateCourse() {
+    for(let i=0;i<this.courses.length;i++){
+      if(this.courses[i].name == this.name && this.courses[i].section == this.section){
+        this.id = this.courses[i].id;
+        this.assists = this.courses[i].assists;
+        return true;
+      }
+    }
+  }
 
-  async openEmail() {
+  saveCourse(result) {
 
-    let result = JSON.parse(this.scannedResult);
+    this.name = result.asignatura;
+    this.section = result.seccion;
 
-    if(result.correo != "") {
+    this.localService.dbState().subscribe((res) => {
+      if (res) {
+        this.localService.fetchCourses().subscribe(item => {
+          this.courses = item;
+        })
+      }
+    })
+
+    if (this.validateCourse()) {
+      this.localService.updateCourse(this.id, this.name, this.assists + 1, this.section);
+      this.router.navigate(['/tabs/assists'])
+    } else if(this.name != "" && this.section != "") {
+      this.localService.addCourse(this.name, 1, this.section);
+      this.router.navigate(['/tabs/assists'])
+    } else {
+      this.localService.presentToast(this.name);
+    }
+  }
+
+
+  async openEmail(result) {
+
+    if (result.correo != "") {
       const email = {
         app: 'gmail',
         to: result.correo,
         subject: 'Asistencia QR',
-        body: 'Mensaje de prueba'
+        body: "Asignatura: " + result.asignatura + " Seccion: " + result.seccion,
       };
-  
+
       this.emailComposer.open(email);
+
     }
+    
   }
 
 
@@ -116,7 +157,9 @@ export class HomePage implements OnDestroy {
       this.content_visibility = '';
       if (result?.hasContent) {
         this.scannedResult = result.content;
-        this.openEmail();
+        let resultJSON = JSON.parse(this.scannedResult);
+        this.saveCourse(resultJSON)
+        this.openEmail(resultJSON);
       }
     } catch (e) {
       console.log(e);
